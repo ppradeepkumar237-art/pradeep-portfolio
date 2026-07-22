@@ -1,26 +1,47 @@
-@import "tailwindcss";
+/* app/globals.css */
 
+/* Load Tailwind (v3). Keep these three lines. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  DESIGN TOKENS — Light + colorful theme (thridy-inspired).
+  Clean white base; vibrant accents make cards/imagery pop.
+*/
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Core (light) */
+  --background: #ffffff;          /* clean white page background     */
+  --foreground: #0a0a0a;          /* near-black primary text         */
+  --muted: #6b7280;               /* grey secondary text             */
+  --border: #ececee;              /* very light grey borders         */
+  --card: #f6f6f7;                /* subtle off-white card surface   */
+
+  /* Primary accent */
+  --accent: #4f46e5;              /* vibrant indigo                  */
+  --accent-foreground: #ffffff;   /* text on the accent color        */
+
+  /* Playful palette for colorful cards / category tags */
+  --accent-blue:   #3b82f6;
+  --accent-violet: #8b5cf6;
+  --accent-coral:  #fb7185;
+  --accent-amber:  #f59e0b;
+  --accent-green:  #10b981;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: smooth;              /* smooth jump-to-section  */
+    -webkit-font-smoothing: antialiased;  /* crisper text            */
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    min-height: 100dvh;
+  }
+
+  /* Text-selection highlight uses the vibrant accent */
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-foreground);
+  }
 }
